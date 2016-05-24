@@ -1,4 +1,4 @@
-<table class='table' ng-show="allSongs.length">
+<table class='table' ng-show="list.length">
     <thead>
         <tr>
             <th></th>
@@ -8,7 +8,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="song in allSongs" ng-class="{active: song === getCurrentSong() }">
+        <tr ng-repeat="song in list" ng-class="{active: song === getCurrentSong() }">
             <td>
                 <button class="btn btn-default btn-xs" ng-click="toggle(song)">
                     <span class="glyphicon" ng-class="{ 'glyphicon-pause': isPlaying(song), 'glyphicon-play': !isPlaying(song) }"></span>
