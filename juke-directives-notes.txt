@@ -1,0 +1,43 @@
+--- Angular Directives --- 
+
+- what is a directive? modify the view by affecting the DOM - map to other bits of code 
+
+app.directive('nameOfDirective', function(){
+	return {};
+}); 
+
+* element and attribute directives are the two main types of directives (it can also have both element and attribute directives)
+
+BELOW are deprecated: 
+class directive 
+m (comment) directive
+
+element directive: 
+app.directive('nameOfDirective', function(){
+	return {
+		restrict: 'E', (specifies the domain of the directive)
+		template OR templateUrl: '<h1></h1>'
+	};
+}); 
+
+In the actual HTML: 
+<div ng-app="someName">
+	<name-of-directive></name-of-directive>					* goes from CAMEL CASE to SNAKE CASE 
+</div>
+
+Link function:
+
+app.directive('nameOfDirective', function(){
+	return {
+		restrict: 'A',
+		template OR templateUrl: '<h1></h1>',
+		link: function(){} ---> houses behavior that the attribute will execute/demonstrate (handles DOM manipulation behavior)
+	};
+});
+
+- $compile service - connects angular to the DOM (creating the bindings we use via the $scope object)
+- the link function takes 3 arguments: 
+	scope, element, and attributes (but you can name these whatever you want) 
+	--> these are the same as $scope, etc... 
+	--> does not accept dependency injections 
+****the link function's purpose is to do POST bootstrap DOM manipulation - it does NOT need to be dependent on dependency injections
